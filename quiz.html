@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Turunan Fungsi Aljabar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo">D'Algebraic</a>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">Beranda</a>
+            <a href="index.html#calculator" class="nav-link">Kalkulator</a>
+            <a href="#rules" class="nav-link">Aturan</a>
+            <a href="index.html#team" class="nav-link">Tim</a>
+        </nav>
+    </header>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="section">
+      <div data-aos="fade-right">
+        <h2>Uji Pemahaman Anda</h2>
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h3>Quiz Turunan Fungsi Aljabar</h3>
+                <p>Jawablah pertanyaan berikut untuk menguji pemahaman Anda</p>
+            </div>
+            </div>
+        
+        <div class="quiz-question">
+            <h3>1. Berapakah turunan dari fungsi f(x) = 3x²?</h3>
+            <div class="quiz-options" data-question="1">
+                <div class="quiz-option" data-correct="true">a) f'(x) = 6x</div>
+                <div class="quiz-option">b) f'(x) = 3x</div>
+                <div class="quiz-option">c) f'(x) = 2x</div>
+                <div class="quiz-option">d) f'(x) = 9x²</div>
+            </div>
+        </div>
+
+        <div class="quiz-question">
+<div data-aos="fade-right">
+            <h3>2. Turunan dari konstanta adalah...</h3>
+            <div class="quiz-options" data-question="2">
+                <div class="quiz-option" data-correct="true">a) 0</div>
+                <div class="quiz-option">b) 1</div>
+                <div class="quiz-option">c) Konstanta itu sendiri</div>
+                <div class="quiz-option">d) Tidak terdefinisi</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-question">
+            <h3>3. Jika f(x) = x⁴ + 2x³ + 3x² + 4x + 5, maka f'(x) adalah...</h3>
+            <div class="quiz-options" data-question="3">
+                <div class="quiz-option">a) 4x² + 12x⁴ + 6x + 0</div>
+                <div class="quiz-option" data-correct="true">b) 4x³ + 6x² + 6x + 4</div>
+                <div class="quiz-option">c) x³ + 2x² + 3x + 4</div>
+                <div class="quiz-option">d) 4x⁴ + 6x³ + 6x² + 4x</div>
+            </div>
+        </div>
+
+        <div class="quiz-question">
+            <h3>4. Turunan dari f(x) = 5x adalah...</h3>
+            <div class="quiz-options" data-question="4">
+                <div class="quiz-option">a) 0</div>
+                <div class="quiz-option">b) 1</div>
+                <div class="quiz-option" data-correct="true">c) 5</div>
+                <div class="quiz-option">d) 5x</div>
+            </div>
+        </div>
+
+        <div class="quiz-question">
+            <h3>5. Manakah yang merupakan turunan dari f(x) = x³ - 2x² + 4x - 1?</h3>
+            <div class="quiz-options" data-question="5">
+                <div class="quiz-option">a) 3x² + 4x + 4</div>
+                <div class="quiz-option" data-correct="true">b) 3x² - 4x + 4</div>
+                <div class="quiz-option">c) x² - 2x + 4</div>
+                <div class="quiz-option">d) 3x³ - 4x² + 4</div>
+            </div>
+        </div>
+
+        <button class="quiz-submit">Submit Jawaban</button>
+        
+        <div class="quiz-result">
+            <div class="quiz-score">Skor Anda: <span id="score">0</span>/5</div>
+            <p id="feedback"></p>
+        </div>
+    </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const quizSubmit = document.querySelector('.quiz-submit');
+    const quizResult = document.querySelector('.quiz-result');
+    const scoreSpan = document.getElementById('score');
+    const feedbackP = document.getElementById('feedback');
+    
+    // Function to handle option selection
+    function handleOptionClick(e) {
+        if (!e.target.classList.contains('quiz-option')) return;
+        
+        // Get all options in the current question
+        const options = e.target.closest('.quiz-options').querySelectorAll('.quiz-option');
+        
+        // Remove selected class from all options in this question
+        options.forEach(opt => opt.classList.remove('selected'));
+        
+        // Add selected class to clicked option
+        e.target.classList.add('selected');
+        
+        // Add nice transition effect
+        e.target.style.transform = 'translateX(10px)';
+        setTimeout(() => {
+            e.target.style.transform = 'translateX(0)';
+        }, 200);
+    }
+
+    // Add click handlers to all quiz options containers
+    document.querySelectorAll('.quiz-options').forEach(optionsContainer => {
+        optionsContainer.addEventListener('click', handleOptionClick);
+    });
+
+    // Handle quiz submission
+    quizSubmit.addEventListener('click', function() {
+        let score = 0;
+        let answeredQuestions = 0;
+        const questions = document.querySelectorAll('.quiz-question');
+        
+        // Reset previous results
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.classList.remove('correct', 'wrong');
+        });
+
+        // Check each question
+        questions.forEach(question => {
+            const selectedOption = question.querySelector('.quiz-option.selected');
+            const correctOption = question.querySelector('.quiz-option[data-correct="true"]');
+            
+            if (selectedOption) {
+                answeredQuestions++;
+                if (selectedOption.dataset.correct === 'true') {
+                    score++;
+                    selectedOption.classList.add('correct');
+                } else {
+                    selectedOption.classList.add('wrong');
+                    correctOption.classList.add('correct');
+                }
+            } else {
+                // Highlight correct answer if no selection was made
+                correctOption.classList.add('correct');
+            }
+        });
+
+        // Update score and feedback
+        scoreSpan.textContent = score;
+        
+        // Generate appropriate feedback
+        let feedback;
+        if (answeredQuestions < 5) {
+            feedback = `Anda belum menjawab semua pertanyaan. ${answeredQuestions} dari 5 pertanyaan dijawab.`;
+        } else if (score === 5) {
+            feedback = "Sempurna! Anda menguasai materi dengan sangat baik!";
+        } else if (score >= 3) {
+            feedback = "Bagus! Anda memahami sebagian besar konsep dengan baik.";
+        } else {
+            feedback = "Terus berlatih! Anda bisa mengulang materi untuk pemahaman lebih baik.";
+        }
+        
+        feedbackP.textContent = feedback;
+        
+        // Show result with animation
+        quizResult.classList.add('show');
+        
+        // Smooth scroll to result
+        quizResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Disable submit button after submission
+        quizSubmit.disabled = true;
+        quizSubmit.textContent = 'Quiz Selesai';
+        quizSubmit.style.opacity = '0.7';
+    });
+});
+  
+document.addEventListener('DOMContentLoaded', function() {
+    const quizSubmit = document.querySelector('.quiz-submit');
+    const quizResult = document.querySelector('.quiz-result');
+    const scoreSpan = document.getElementById('score');
+    const feedbackP = document.getElementById('feedback');
+    
+    // Add click handler for options with improved selection handling
+    document.querySelectorAll('.quiz-options').forEach(questionOptions => {
+        questionOptions.addEventListener('click', function(e) {
+            if (e.target.classList.contains('quiz-option')) {
+                // Remove selected class from all options in this question only
+                this.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                // Add selected class to clicked option
+                e.target.classList.add('selected');
+            }
+        });
+    });
+
+    quizSubmit.addEventListener('click', function() {
+        let score = 0;
+        const questions = document.querySelectorAll('.quiz-question');
+        
+        questions.forEach(question => {
+            const selectedOption = question.querySelector('.quiz-option.selected');
+            const options = question.querySelectorAll('.quiz-option');
+            
+            // Reset previous results
+            options.forEach(option => {
+                option.classList.remove('correct', 'wrong');
+                if (option.dataset.correct === 'true') {
+                    option.classList.add('correct');
+                }
+            });
+
+            if (selectedOption) {
+                if (selectedOption.dataset.correct === 'true') {
+                    score++;
+                } else {
+                    selectedOption.classList.add('wrong');
+                }
+            }
+        });
+
+        scoreSpan.textContent = score;
+        
+        // Customize feedback based on score
+        let feedback;
+        if (score === 5) {
+            feedback = "Sempurna! Anda menguasai materi dengan sangat baik!";
+        } else if (score >= 3) {
+            feedback = "Bagus! Anda memahami sebagian besar konsep dengan baik.";
+        } else {
+            feedback = "Terus berlatih! Anda bisa mengulang materi untuk pemahaman lebih baik.";
+        }
+        
+        feedbackP.textContent = feedback;
+        quizResult.classList.add('show');
+        
+        // Scroll to result
+        quizResult.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+</script>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

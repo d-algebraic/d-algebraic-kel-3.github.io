@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turunan Fungsi Aljabar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Latar Belakang dan Header -->
+    <div class="background">
+        <header class="header">
+            <a href="#" class="logo"> D'Algebraic</a>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav-menu">
+    <a href="index.html" class="nav-link">Beranda</a>
+    <a href="index.html#calculator" class="nav-link">Kalkulator</a>
+    <a href="quiz.html" class="nav-link">Quiz</a>
+    <a href="index.html#team" class="nav-link">Tim</a>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Bagian Beranda -->
+    <section id="home" class="section">
+        <div class="home-content">
+            <div class="text-content">
+<div data-aos="fade-right">
+                <h1>Memahami Turunan Fungsi Aljabar</h1>
+                <h3>Tujuan dari dibuatnya website ini adalah untuk menambah wawasan kita dalam matematika terutama Turunan Fungsi Aljabar. Kami terus mengembangkan website ini seiring dengan peningkatan kemampuan kami.</h3>
+                <button class="start-button" onclick="scrollToRules()">Ayo Mulai Belajar</button>
+            </div>
+            </div>
+            <div class="image-content">
+                <img src="kal.jpg" alt="kal" class="intro-image">
+            </div>
+        </div>
+    </section>
+<br>
+<br>
+<section id="rules" class="section rules-section">
+  <div data-aos="zoom-in">
+        <h1>Apa Itu Turunan Fungsi Aljabar?</h1>
+        <br>
+        <br>
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-title">Pengertian Turunan</button>
+                <div class="accordion-content">
+  <p>Turunan fungsi aljabar adalah fungsi baru hasil penurunan pangkat dari fungsi sebelumnya menurut aturan yang telah ditetapkan. Jika diimplementasikan di dalam grafik fungsi, turunan ini merupakan gradien garis singgung terhadap grafik di titik tertentu. Tingkat turunan fungsi tidak terbatas pada satu tingkat saja, tetapi juga bisa dua tingkat, tiga tingkat, dan seterusnya. Konsep turunan setiap tingkatnya juga sama. Hanya saja, fungsi yang diturunkan berbeda-beda karena mengacu pada hasil turunan sebelumnya. 
+
+                    <p>persamaan fungsi aljabar yang derajat polinomnya lebih dari 1 (pangkat lebih dari 1). Untuk itu, kamu bisa menggunakan rumus-rumus berikut.</p>
+
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-title">1. Aturan Konstanta</button>
+                <div class="accordion-content">
+                    <p>Fungsi konstanta adalah fungsi dengan bentuk f(x) = n dengan n = bilangan real.Aturan konstanta dalam turunan menyatakan bahwa turunan dari suatu konstanta adalah nol. Jika diketahui f(x) = n, dengan n bilangan real, maka f’(x) = 0</p>
+                    <p class="example">Contoh: f(x) = 15 → f'(x) = 0</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-title">2. Aturan Variabel</button>
+                <div class="accordion-content">
+                    <p>Aturan variabel dalam aljabar adalah prinsip yang mengatur bagaimana variabel-yang biasanya dilambangkan dengan huruf seperti z, y, atau z-diperlakukan dalam operasi matematika. Variabel adalah simbol yang mewakili bilangan yang belum diketahui atau bilangan yang dapat berubah.</p>
+                    <p class="example">Contoh: f(x) = 5x → f'(x) = 5</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-title">3. Aturan Pangkat</button>
+                <div class="accordion-content">
+                    <p>Saat menurunkan suatu fungsi, artinya kamu sedang mencari turunan pangkat dari fungsi tersebut atau pangkatnya menjadi lebih kecil. <br>Misal, jika variabel x2 diturunkan terhadap x, maka derajat variabelnya akan berkurang 1 menjadi x. Jika variabel x3 diturunkan terhadap x, maka derajat variabelnya akan berkurang 1 menjadi x2 dan seterusnya.</p>
+                    <p class="example">Contoh: f(x) = 6x<sup>4</sup> + 2x<sup>3</sup> → f'(x) = 24x<sup>3</sup> + 6x<sup>2</sup></p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-title">4. Aturan Jumlah/Selisih</button>
+                <div class="accordion-content">
+                    <p>Aturan jumlah atau selisih dalam aljabar mengacu pada cara menjumlahkan atau mengurangkan ekspresi aljabar, yang biasanya terdiri dari variabel, konstanta, atau keduanya. Aturan ini digunakan untuk menyederhanakan ekspresi dengan menggabungkan suku-suku sejenis, yaitu suku-suku yang memiliki variabel dan pangkat yang sama.</p>
+                    <p class="example">Contoh: f(x) = (x<sup>2</sup> + 3x) → f'(x) = 2x + 3</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+
+<section id="calculator" class="section">
+  <div data-aos="zoom-in">
+    <h1>Kalkulator Turunan</h1>
+    <div class="calculator-container">
+
+        <label for="function">Masukkan Fungsi f(x):</label>
+        <input type="text" id="function" placeholder="Contoh: 3x^2 + 5x + 2">
+        <button onclick="calculateDerivative()">Hitung Turunan</button>
+ <div class="result">
+            <p>Hasil Turunan:</p>
+            <div class="derivative" id="result">-</div>
+        </div>
+    </div>
+    </div>
+    <!-- Link ke halaman Quiz -->
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="quiz.html" class="start-button">Lanjut ke Quiz</a>
+    </div>
+</section>
+
+
+    <!-- Bagian Tim -->
+    
+    <section id="team" class="section">
+<div data-aos="zoom-in">
+            <h1 id="team">Workteam!PARTNERS</h1>
+    <h3>Berikut adalah anggota kelompok kami yang menyusun website ini.</h3>
+    <br>
+        <div class="team-container">
+            <div class="team-card">
+                <img src="abil.jpg" alt="Abil" class="team-image">
+                <h3>Muhammad AbilNur</h3>
+                <p>Pengembang</p>
+            </div>
+            <div class="team-card">
+                <img src="sah.jpg" alt="Abil" class="team-image">
+                <h3>Syahid I.A</h3>
+                <p>Pengembang</p>
+            </div>
+            <div class="team-card">
+                <img src="zi.jpg" alt="Abil" class="team-image">
+                <h3>Muhammad ziya pasya</h3>
+                <p>Pengembang</p>
+            </div>
+                        <div class="team-card">
+                <img src="riz.jpg" alt="Abil" class="team-image">
+                <h3>Moh Rizal</h3>
+                <p>Pengembang</p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+  AOS.init();
+</script>
+</body>
+</html>
